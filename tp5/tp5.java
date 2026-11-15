@@ -7,50 +7,50 @@ public class tp5 {
     public static void main(String[] args) {
         JFrame frame = new JFrame("TP5");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
-        frame.setLocationRelativeTo(null);
-        frame.setLayout(new BorderLayout());
+        frame.setResizable(false);
 
-        JPanel topPanel = new JPanel(new BorderLayout());
+        JPanel container = new JPanel(null);
+        container.setPreferredSize(new Dimension(400, 400));
+
+        JPanel topPanel = new JPanel(null);
         topPanel.setBackground(Color.LIGHT_GRAY);
-        topPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        topPanel.setPreferredSize(new Dimension(400, 90));
-        JLabel titleLabel = new JLabel("JAVA");
+        topPanel.setBounds(0, 0, 400, 100);
+        JLabel titleLabel = new JLabel("JAVA", SwingConstants.CENTER);
         titleLabel.setFont(new Font("MV Boli", Font.BOLD, 30));
         titleLabel.setForeground(Color.GREEN);
-        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        titleLabel.setVerticalAlignment(SwingConstants.CENTER);
-        topPanel.add(titleLabel, BorderLayout.CENTER);
+        titleLabel.setBounds(0, 0, 400, 100);
+        topPanel.add(titleLabel);
 
-        JPanel bottomPanel = new JPanel(new BorderLayout());
-
-        JPanel leftPanel = new JPanel();
+        JPanel leftPanel = new JPanel(null);
         leftPanel.setBackground(Color.CYAN);
-        leftPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        leftPanel.setPreferredSize(new Dimension(120, 0));
+        leftPanel.setBounds(0, 100, 133, 300);
 
-        JPanel centerPanel = new JPanel(new BorderLayout());
+        JPanel centerPanel = new JPanel(null);
         centerPanel.setBackground(Color.WHITE);
-        centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        centerPanel.setBounds(133, 100, 134, 300);
         ImageIcon originalIcon = new ImageIcon("tp5/7756321.png");
         Image scaledImage = originalIcon.getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH);
         JLabel imageLabel = new JLabel("image", new ImageIcon(scaledImage), SwingConstants.CENTER);
         imageLabel.setHorizontalTextPosition(SwingConstants.CENTER);
         imageLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
-        centerPanel.add(imageLabel, BorderLayout.CENTER);
+        imageLabel.setBounds(0, 0, 134, 300);
+        centerPanel.add(imageLabel);
 
-        JPanel rightPanel = new JPanel();
+        JPanel rightPanel = new JPanel(null);
         rightPanel.setBackground(Color.YELLOW);
-        rightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        rightPanel.setPreferredSize(new Dimension(120, 0));
+        rightPanel.setBounds(267, 100, 133, 300);
+        JButton button = new JButton("Send");
+        button.setBounds(43, 255, 80, 30);
+        rightPanel.add(button);
 
-        bottomPanel.add(leftPanel, BorderLayout.WEST);
-        bottomPanel.add(centerPanel, BorderLayout.CENTER);
-        bottomPanel.add(rightPanel, BorderLayout.EAST);
+        container.add(topPanel);
+        container.add(leftPanel);
+        container.add(centerPanel);
+        container.add(rightPanel);
 
-        frame.add(topPanel, BorderLayout.NORTH);
-        frame.add(bottomPanel, BorderLayout.CENTER);
-
+        frame.setContentPane(container);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }
